@@ -12,8 +12,11 @@ export class ServerStatusComponent implements OnInit {
   private destroyRef = inject(DestroyRef)
 
   constructor() {
-    effect(() => {
+    effect((onCleanup) => {
       console.log(this.currentStatus())
+      onCleanup(() => {
+        //clearTimeout(timer);
+      });
     });
   }
 
